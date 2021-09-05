@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:thecakecart/Constants/Colors.dart';
+import 'package:thecakecart/GoogleSheetApi/Api%20code.dart';
 import 'package:thecakecart/pages/ItemsPurchased.dart';
 import 'package:thecakecart/pages/ListOfItemsSold.dart';
 import 'package:thecakecart/pages/stats.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppSheetApi.init();
+
   runApp(
       MaterialApp(
         title: "Cake Cart Account",
@@ -22,12 +27,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   var _currentIndex = 0;
   var pages = [
     ItemsSold(),
     ItemPurchased(),
     Stats(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
