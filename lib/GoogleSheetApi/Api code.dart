@@ -53,6 +53,11 @@ class AppSheetApi{
     _userSheet!.values.map.appendRow(rowList);
   }
 
+  static Future<int> getRowCount() async {
+    final lastRow = await _userSheet!.values.lastRow();
+    return lastRow == null ? 0 : int.tryParse(lastRow.first) ?? 0;
+  }
+
 }
 
 

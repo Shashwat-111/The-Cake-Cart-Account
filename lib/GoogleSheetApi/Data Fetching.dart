@@ -33,4 +33,17 @@ class User{
     PurchaserDetails.itemType : itemType,
     PurchaserDetails.rate : rate,
   };
+
+  copy({
+    int? id,
+    String? name,
+    String? rate,
+    String? itemType,
+  }) => 
+      User(
+          rate: rate ?? this.rate,
+          id: id ?? this.id,
+          itemType: itemType ?? this.itemType,
+          name: name ?? this.name,
+      );
 }

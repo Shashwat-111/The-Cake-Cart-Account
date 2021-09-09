@@ -41,7 +41,9 @@ class _ItemsSoldState extends State<ItemsSold> {
             builder: (context){
               return InputForm(
                 onSavedUser: (user) async {
-                  await AppSheetApi.insert(user.toJason());
+                  final id = await AppSheetApi.getRowCount() + 1;
+                  final newUser = user.copy(id:id);
+                  await AppSheetApi.insert(newUser.toJason());
                 },
               );
             }
