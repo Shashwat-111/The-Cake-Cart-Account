@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return AppBar(
 
       backgroundColor: kAppBarBackground,
@@ -27,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 300,
+            width: width*0.75,
             height: 40,
             child: TextFormField(
 
@@ -62,15 +63,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
 
-          IconButton(
-              icon: Icon(
-                Icons.sort_sharp,
-                color: kAppBarSortIcon,
-                size: 30,
-              ),
-              onPressed: (){
-                //todo: implement sort functionality
-              })
+          Expanded(
+            child: IconButton(
+                icon: Icon(
+                  Icons.sort_sharp,
+                  color: kAppBarSortIcon,
+                  size: 28,
+                ),
+                onPressed: (){
+                  //todo: implement sort functionality
+                }),
+          )
         ],
       ),
 

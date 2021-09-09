@@ -11,6 +11,14 @@ class SaleCard extends StatefulWidget {
 }
 
 class _SaleCardState extends State<SaleCard> {
+  late var demoCakeImage;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    demoCakeImage = NetworkImage("https://media.istockphoto.com/photos/fresh-fruit-cream-cake-picture-id1218487059");
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -107,7 +115,7 @@ class _SaleCardState extends State<SaleCard> {
                                     flex:1,
                                     child: Container(
                                       child: Center(
-                                        child: Text(demoRate, style: TextStyle(fontSize: 25, color: Colors.green),),
+                                        child: Text(demoRate, style: TextStyle(fontSize: 24, color: Colors.green),),
                                       ),
                                     )
                                 ),

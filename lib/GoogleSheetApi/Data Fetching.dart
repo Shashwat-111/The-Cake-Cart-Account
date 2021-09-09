@@ -8,7 +8,29 @@ class PurchaserDetails
   static final String name = "Name";
   static final String rate = "Rate";
   static final String itemType = "Item Type";
-  static final String cakeImage = "Url";
 
-  static List<String> getFields() => [id,name,rate,itemType,cakeImage];
+  static List<String> getFields() => [id,name,rate,itemType];
+}
+
+
+class User{
+
+  final int? id;
+  final String name;
+  final String rate;
+  final String itemType;
+
+  const User({
+    this.id,
+    required this.rate,
+    required this.itemType,
+    required this.name,
+});
+  //todo define a to json method
+  Map<String,dynamic> toJason() => {
+    PurchaserDetails.id : id,
+    PurchaserDetails.name : name,
+    PurchaserDetails.itemType : itemType,
+    PurchaserDetails.rate : rate,
+  };
 }

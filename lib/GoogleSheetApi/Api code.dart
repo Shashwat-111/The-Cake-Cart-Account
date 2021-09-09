@@ -49,6 +49,10 @@ class AppSheetApi{
     }
   }
 
+  static Future insert(Map<String, dynamic> rowList) async {
+    _userSheet!.values.map.appendRow(rowList);
+  }
+
 }
 
 
