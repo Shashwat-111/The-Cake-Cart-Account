@@ -2,23 +2,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:thecakecart/Constants/Colors.dart';
 import 'package:thecakecart/Constants/TextThemes.dart';
+import 'package:thecakecart/GoogleSheetApi/Data Fetching.dart';
 
 class SaleCard extends StatefulWidget {
-  const SaleCard({Key? key}) : super(key: key);
+  final User? user;
+  const SaleCard({Key? key, this.user}) : super(key: key);
 
   @override
   _SaleCardState createState() => _SaleCardState();
 }
 
 class _SaleCardState extends State<SaleCard> {
-  late var demoCakeImage;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    demoCakeImage = NetworkImage("https://media.istockphoto.com/photos/fresh-fruit-cream-cake-picture-id1218487059");
+    initUser();
   }
 
+  @override
+  void didUpdateWidget(covariant SaleCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    initUser();
+  }
+
+  void initUser(){
+    final name = widget.user == null ? "-" : widget.user!.name;
+    final rate = widget.user == null ? "-" : widget.user!.rate;
+    final itemtype = widget.user == null ? "-" : widget.user!.itemType;
+    setState(() {
+      demoName = name;
+      demoRate = rate;
+      demoItem = itemtype;
+    });
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -71,9 +87,10 @@ class _SaleCardState extends State<SaleCard> {
                                 flex: 6,
                                   child: Text(
                                     demoName,
-                                    overflow: TextOverflow.ellipsis,
+                                    overflow: TextOverflow.clip,
+                                    softWrap: false,
                                     style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 26,
                                         fontWeight: FontWeight.bold
                                     ),
                                   )
@@ -82,7 +99,7 @@ class _SaleCardState extends State<SaleCard> {
                               Expanded(
                                 flex: 1,
                                 child: IconButton(
-                                    icon: Icon(Icons.more_vert_rounded),
+                                    icon: Icon(Icons.more_vert_rounded, color: Colors.white,),//todo remove this white color when edit option is available
                                     onPressed: (){}
                                 ),
                               )
@@ -103,8 +120,8 @@ class _SaleCardState extends State<SaleCard> {
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(demoItem,style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),),
-                                          Text(demoDate,style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+                                          Text("Item: "+demoItem,style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),),
+                                          // Text(demoDate,style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
                                         ],
                                       ),
 
@@ -115,7 +132,7 @@ class _SaleCardState extends State<SaleCard> {
                                     flex:1,
                                     child: Container(
                                       child: Center(
-                                        child: Text(demoRate, style: TextStyle(fontSize: 24, color: Colors.green),),
+                                        child: Text(demoRate+ "/-", style: TextStyle(fontSize: 24, color: Colors.green),),
                                       ),
                                     )
                                 ),

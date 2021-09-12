@@ -1,6 +1,5 @@
+import 'dart:convert';
 import 'dart:core';
-
-import 'package:flutter/material.dart';
 
 class PurchaserDetails
 {
@@ -26,8 +25,7 @@ class User{
     required this.itemType,
     required this.name,
 });
-  //todo define a to json method
-  Map<String,dynamic> toJason() => {
+  Map<String,dynamic> toJson() => {
     PurchaserDetails.id : id,
     PurchaserDetails.name : name,
     PurchaserDetails.itemType : itemType,
@@ -46,4 +44,13 @@ class User{
           itemType: itemType ?? this.itemType,
           name: name ?? this.name,
       );
+
+  static User fromJson(Map<String,dynamic> json) => User(
+
+    id: jsonDecode(json[PurchaserDetails.id]),
+    name: json[PurchaserDetails.name],
+    rate: json[PurchaserDetails.rate],
+    itemType: json[PurchaserDetails.itemType],
+
+  );
 }

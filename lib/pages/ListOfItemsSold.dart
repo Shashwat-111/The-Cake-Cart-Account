@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:thecakecart/GoogleSheetApi/Api%20code.dart';
 import 'package:thecakecart/GoogleSheetApi/Api code.dart';
-import 'package:thecakecart/GoogleSheetApi/Data%20Fetching.dart';
-import 'package:thecakecart/GoogleSheetApi/Data Fetching.dart';
 import 'package:thecakecart/Widgets/CustomAppBar.dart';
 import 'package:thecakecart/Widgets/SaleCard.dart';
 import 'package:thecakecart/pages/InputForm.dart';
+import 'package:thecakecart/GoogleSheetApi/Data Fetching.dart';
 
 class ItemsSold extends StatefulWidget {
   const ItemsSold({Key? key}) : super(key: key);
@@ -16,6 +15,22 @@ class ItemsSold extends StatefulWidget {
 }
 
 class _ItemsSoldState extends State<ItemsSold> {
+  List<User> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  Future getUser() async {
+    final users = await AppSheetApi.getAll();
+
+    setState(() {
+      this.users = users;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -24,8 +39,10 @@ class _ItemsSoldState extends State<ItemsSold> {
         child: Padding(
           padding: const EdgeInsets.only(top: 30),
           child: Column(
-            children: List.generate(10, (index){
-              return SaleCard();
+            children: List.generate(users.length, (index){
+              return SaleCard(
+                user : users[index]
+              );
             })
           ),
         ),
@@ -35,7 +52,6 @@ class _ItemsSoldState extends State<ItemsSold> {
 
       floatingActionButton: FloatingActionButton(
         elevation: 3,
-        //todo remove all the code from below function as it is only for demonstration
         onPressed: (){
           Navigator.push(context, MaterialPageRoute(
             builder: (context){
@@ -43,28 +59,14 @@ class _ItemsSoldState extends State<ItemsSold> {
                 onSavedUser: (user) async {
                   final id = await AppSheetApi.getRowCount() + 1;
                   final newUser = user.copy(id:id);
-                  await AppSheetApi.insert(newUser.toJason());
+                  await AppSheetApi.insert(newUser.toJson());
                 },
               );
             }
           ));
-
-
-
-          // insertUsers(); //todo add this method to save button in Input form
         },
         child: Icon(Icons.add),
       ),
     );
-  }
-
-  Future insertUsers() async {
-    final user = User(
-      id: 1,
-      name: "Shashwat",
-      itemType: "cake",
-      rate: "600",
-    );
-    await AppSheetApi.insert(user.toJason());
   }
 }

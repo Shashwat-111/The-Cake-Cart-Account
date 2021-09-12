@@ -1,5 +1,7 @@
 import 'package:gsheets/gsheets.dart';
 import 'Data Fetching.dart';
+import 'package:thecakecart/GoogleSheetApi/Data Fetching.dart';
+import 'dart:async';
 
 class AppSheetApi{
 
@@ -49,6 +51,12 @@ class AppSheetApi{
     }
   }
 
+  static Future<User?> getById(int id) async {
+    if(_userSheet==null) return null;
+    final json = await _userSheet!.values.map.rowByKey(id, fromColumn: 1);
+    return json == null ? null : User.fromJson(json);
+  }
+
   static Future insert(Map<String, dynamic> rowList) async {
     _userSheet!.values.map.appendRow(rowList);
   }
@@ -58,6 +66,15 @@ class AppSheetApi{
     return lastRow == null ? 0 : int.tryParse(lastRow.first) ?? 0;
   }
 
+  static Future<List<User>> getAll() async {
+    if (_userSheet == null) return <User>[];
+    final users = await _userSheet!.values.map.allRows();
+    return users == null ? <User>[] : users.map(User.fromJson).toList();
+  }
+
 }
+
+
+
 
 
