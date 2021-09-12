@@ -35,19 +35,21 @@ class _InputFormState extends State<InputForm> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+
           appBar: AppBar(
             centerTitle: true,
             title: Text("Add Purchaser", style: TextStyle(fontSize: 25),),
           ),
+
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 20),
+                    padding: const EdgeInsets.only(left: 8, top: 20),
                     child: Text(
                       "NAME",
                       style: TextStyle(
@@ -56,7 +58,7 @@ class _InputFormState extends State<InputForm> {
                           fontWeight: FontWeight.bold
                       ),
                     ),
-                  ),
+                  ), //Heading- Name
 
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 20),
@@ -73,7 +75,6 @@ class _InputFormState extends State<InputForm> {
 
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 15,horizontal: 15),
-
                         hintText: "Name",
                         hintStyle: TextStyle(
                           color: Colors.black,
@@ -91,10 +92,10 @@ class _InputFormState extends State<InputForm> {
                         ),
                       ),
                     ),
-                  ), //for name
+                  ), //TextField for name
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 15, bottom: 10),
+                    padding: const EdgeInsets.only(left: 8, bottom: 10),
                     child: Text(
                         "ITEM TYPE",
                       style: TextStyle(
@@ -103,13 +104,12 @@ class _InputFormState extends State<InputForm> {
                         fontWeight: FontWeight.bold
                       ),
                     ),
-                  ),
+                  ), //Heading- ItemType
 
                   EasyAnimatedTab(
                       buttonTitles: ["Cake", "CupCake", "Hamper"],
                       onSelected:(index){
                         itemTypeIndex = index;
-                        print(itemTypeIndex);
                       },
                     minWidthOfItem:80,
 
@@ -119,10 +119,10 @@ class _InputFormState extends State<InputForm> {
                     ),
                     deActiveTextStyle: TextStyle(
                         fontSize: 19
-                    ),),
+                    ),), //Selectable icon For ItemType
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 20),
+                    padding: const EdgeInsets.only(left: 9, top: 20),
                     child: Text(
                       "RATE",
                       style: TextStyle(
@@ -131,7 +131,7 @@ class _InputFormState extends State<InputForm> {
                           fontWeight: FontWeight.bold
                       ),
                     ),
-                  ),
+                  ), //Heading- Rate
 
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 20),
@@ -167,7 +167,7 @@ class _InputFormState extends State<InputForm> {
                         ),
                       ),
                     ),
-                  ),
+                  ), //TextField for rate
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -188,7 +188,7 @@ class _InputFormState extends State<InputForm> {
                           },
                       ),
                     ],
-                  )
+                  ),// Done button with logic
                 ],
               ),
             ),
