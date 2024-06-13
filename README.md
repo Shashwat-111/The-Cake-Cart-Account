@@ -1,22 +1,37 @@
 # TheCakeCart
-The Google Sheet - 
-![Gsheet](https://user-images.githubusercontent.com/73649098/132999971-de27ac1f-0cf5-4668-8045-9560d7d38c88.PNG)
 
-Home page -
-![Screenshot_1631473568](https://user-images.githubusercontent.com/73649098/132999949-cbd798c8-2c29-4258-b347-34d2949e216e.png)
+TheCakeCart is an application developed to manage data stored in a Google Sheet. It allows users to interact with the spreadsheet, add new entries, and auto-generate unique IDs for each new entry.
 
-Page to add a purchaser-
-![Screenshot_1631473588](https://user-images.githubusercontent.com/73649098/132999982-b644b5bf-6ff2-4867-9722-914e72d62e87.png)
+## Features Implemented
 
-Currently the app can - 
--Fetch the data stored in my google sheet.
--Can add data to the spreadsheet like Name, ItemType, and ammount.
--Auto generate a ID or a key for the New field added 
+- Fetches data stored in a Google Sheet.
+- Enables users to add data to the spreadsheet, including fields for Name, ItemType, and Amount.
+- Automatically generates a unique ID or key for each new entry.
 
-Many feature are yet to be developed like
--Search and sort function.
--Items Bought and Statistics Page.
--Method to edit prefilled cells. 
--Add custom Image.
+## Screenshots
+
+### Google Sheet Integration:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73649098/132999971-de27ac1f-0cf5-4668-8045-9560d7d38c88.PNG" alt="TheCakeCart Google Sheet Integration" width="300" style="margin-right: 20px;"/>
+</p>
+
+### Home Page:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73649098/132999949-cbd798c8-2c29-4258-b347-34d2949e216e.png" alt="TheCakeCart Home Page" width="300" style="margin-right: 20px;"/>
+</p>
+
+### Page to Add a Purchaser:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73649098/132999982-b644b5bf-6ff2-4867-9722-914e72d62e87.png" alt="TheCakeCart Add Purchaser Page" width="300" style="margin-right: 20px;"/>
+</p>
+
+## Future Development
+
+TheCakeCart is a work in progress with several planned features:
+
+- Search and sort functionality.
+- Pages for viewing purchased items and statistics.
+- Method to edit pre-filled cells.
+- Ability to add custom images.
 
 
